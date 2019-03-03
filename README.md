@@ -30,3 +30,12 @@ const colorize = (...args) => ({
 console.log(colorize('foobar').red); // Will output "foobar" in red in the console.
 console.log(colorize('foo', 'bar').bgBlue); // Will add a blue background color to the text output in the console.
 ```
+### Creates a Directory If It Doesn't Already Exist
+- Use fs.existsSync() to check if the directory exists, fs.mkdirSync() to create it.
+```javascript
+const fs = require('fs');
+
+const createDirIfNotExists = dir => (!fs.existsSync(dir) ? fs.mkdirSync(dir) : undefined);
+
+createDirIfNotExists('foobar'); // creates the directory 'foobar', if it doesn't exist
+```
