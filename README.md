@@ -39,3 +39,14 @@ const createDirIfNotExists = dir => (!fs.existsSync(dir) ? fs.mkdirSync(dir) : u
 
 createDirIfNotExists('foobar'); // creates the directory 'foobar', if it doesn't exist
 ```
+### Write a JSON Object to a File
+- Use the "fs" middleware
+```javascript
+// import the middleware
+const fs = require('fs');
+
+const JSONToFile = (obj, filename) =>
+  fs.writeFile(`${filename}.json`, JSON.stringify(obj, null, 2));
+  
+JSONToFile({ test: 'is passed' }, 'testJsonFile'); // writes the object to 'testJsonFile.json'
+```
