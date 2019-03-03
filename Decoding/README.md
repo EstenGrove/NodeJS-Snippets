@@ -20,3 +20,27 @@ const encodeBase64 = str => Buffer.from(str, 'binary').toString('base64');
 encodeBase64(tc1); // Zm9vYmFy
 encodeBase64('EstenGrove'); // 'RXN0ZW5Hcm92ZQ=='
 ```
+### Create a Hash Using SHA-256
+- Uses the "crypto" API to create a hash for a given value.
+- Use setTimeout() to prevent blocking during a long operation and use a Promise for better readability.
+```javascript
+// Import the Crypto API
+const crypto = require('crypto');
+
+const hashNode = val =>
+  new Promise(resolve =>
+    setTimeout(
+      () =>
+        resolve(
+          crypto
+            .createHash('sha256')
+            .update(val)
+            .digest('hex')
+        ),
+      0
+    )
+  );
+  
+hashNode(JSON.stringify({ a: 'a', b: [1, 2, 3, 4], foo: { c: 'bar' } })).then(console.log);
+// RESULT: '04aa106279f5977f59f9067fa9712afc4aedc6f5862a8defc34552d8c7206393'
+```
