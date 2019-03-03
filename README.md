@@ -26,4 +26,7 @@ const colorize = (...args) => ({
   bgCyan: `\x1b[46m${args.join(' ')}\x1b[0m`,
   bgWhite: `\x1b[47m${args.join(' ')}\x1b[0m`
 });
+
+console.log(colorize('foobar').red); // Will output "foobar" in red in the console.
+console.log(colorize('foo', 'bar').bgBlue); // Will add a blue background color to the text output in the console.
 ```
