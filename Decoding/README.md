@@ -44,3 +44,16 @@ const hashNode = val =>
 hashNode(JSON.stringify({ a: 'a', b: [1, 2, 3, 4], foo: { c: 'bar' } })).then(console.log);
 // RESULT: '04aa106279f5977f59f9067fa9712afc4aedc6f5862a8defc34552d8c7206393'
 ```
+### Generate a UUID In Node
+- Use the "crypo" API
+```javascript
+// import crypto
+const crypto = require('crypto');
+
+const UUIDGeneratorNode = () =>
+  ([1e7] + -1e3 + -4e3 + -8e3 + -1e11).replace(/[018]/g, c =>
+    (c ^ (crypto.randomBytes(1)[0] & (15 >> (c / 4)))).toString(16)
+  );
+  
+UUIDGeneratorNode(); // '79c7c136-60ee-40a2-beb2-856f1feabefc'
+```
