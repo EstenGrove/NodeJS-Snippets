@@ -34,3 +34,10 @@ contents of test.txt :
 let arr = readFileLines('test.txt');
 console.log(arr); // ['line1', 'line2', 'line3']
 ```
+### Convert a "~" Path to an Absolute Path
+- Use String.prototype.replace() with a regular expression and OS.homedir() to replace the ~ in the start of the path with the home directory.
+```javascript
+const untildify = str => str.replace(/^~($|\/|\\)/, `${require('os').homedir()}$1`);
+
+untildify('~/node'); // '/Users/aUser/node'
+```
