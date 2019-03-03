@@ -41,6 +41,7 @@ createDirIfNotExists('foobar'); // creates the directory 'foobar', if it doesn't
 ```
 ### Write a JSON Object to a File
 - Use the "fs" middleware
+- Use fs.writeFile(), template literals and JSON.stringify() to write a json object to a .json file.
 ```javascript
 // import the middleware
 const fs = require('fs');
